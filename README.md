@@ -17,9 +17,16 @@ the global flags are:
 
 **collectRealsense:**
 This function is for collecting the images from the realsense2 camera
+The dataset will be saved in the path
+*dataset/rs/image*: for rgb images
+*dataset/rs/depth*: for depth images
 
 **collectZed:**
 This function is for collecting the images from the Zed camera
+The dataset will be saved in the path
+*dataset/z/image_l*: for left camera rgb images
+*dataset/z/image_r*: for right camera rgb images
+*dataset/z/depth*: for depth images (alligned with left camera)
 
 _______________________________________________________
 ## args.py

@@ -127,7 +127,7 @@ def main():
 	config = rs.config()
 	config.enable_stream(rs.stream.depth, 640, 480, rs.format.z16, 30)
 	config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
-	#pipeline.start(config)
+	pipeline.start(config)
 
 	# Init Zed camera
 	zed = sl.Camera()
@@ -144,10 +144,10 @@ def main():
 
 
 	# Open the camera
-	#err = zed.open(init_params)
-	#if err != sl.ERROR_CODE.SUCCESS:
-	#	print("No Zed Camera Connected")
-	#	exit(1)
+	err = zed.open(init_params)
+	if err != sl.ERROR_CODE.SUCCESS:
+		print("No Zed Camera Connected")
+		exit(1)
 
 	image_z_l = sl.Mat()
 	image_z_r = sl.Mat()
@@ -170,8 +170,8 @@ def main():
 				buttonOnePressed = False
 				print("Btn 1 pressed!")
 
-				#collectRealsense(pipeline, i)
-				#collectZed(zed, runtime_parameters, i)
+				collectRealsense(pipeline, i)
+				collectZed(zed, runtime_parameters, i)
 				
 				# Editing the log to change the image numbering
 				# Remember the last image number and continue even if the 
@@ -195,6 +195,8 @@ def main():
 			if buttonOneReleased:
 				buttonOneReleased = False
 				print("Btn 1 released!")
+				print("Exiting program!")
+				exit(1)
 
 			# ___________________________________________________________
 			# What happens when release Button 2
